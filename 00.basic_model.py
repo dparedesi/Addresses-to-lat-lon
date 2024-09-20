@@ -64,7 +64,7 @@ def geocode_with_fallback(row):
 
 # Read the CSV file
 logger.info("Reading CSV file")
-df = pd.read_csv('address_file.csv')
+df = pd.read_csv('inputs-outputs/input_locations.csv')
 logger.info(f"Loaded {len(df)} rows from CSV")
 
 # Extract postcodes
@@ -95,8 +95,8 @@ logger.info(f"Finished geocoding process. Successfully geocoded {successful_geoc
 
 # Save the updated DataFrame to a new CSV file
 logger.info("Saving results to CSV")
-df.to_csv('geocoded_addresses.csv', index=False)
-logger.info("Results saved to geocoded_addresses.csv")
+df.to_csv('inputs-outputs/output_lat_lon.csv', index=False)
+logger.info("Results saved to output_lat_lon.csv")
 logger.info(f"Total addresses processed: {total_addresses}")
 logger.info(f"Successfully geocoded: {successful_geocodes}")
 logger.info(f"Success rate: {successful_geocodes/total_addresses:.2%}")
