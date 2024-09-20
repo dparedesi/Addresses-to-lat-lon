@@ -43,3 +43,71 @@
 2024-09-20 01:57:47,058 - INFO - Total addresses processed: 48
 2024-09-20 01:57:47,058 - INFO - Successfully geocoded: 44
 2024-09-20 01:57:47,058 - INFO - Success rate: 91.67%
+2024-09-20 01:59:30,363 - INFO - Reading CSV file: inputs-outputs/input_locations.csv
+2024-09-20 01:59:30,366 - INFO - Loaded 48 rows from CSV
+2024-09-20 01:59:30,366 - INFO - Extracting postcodes from addresses
+2024-09-20 01:59:30,368 - INFO - Extracted 44 postcodes
+2024-09-20 01:59:30,368 - INFO - Starting geocoding process
+2024-09-20 02:00:22,827 - INFO - Finished geocoding process. Successfully geocoded 47 out of 48 addresses.
+2024-09-20 02:00:22,827 - INFO - Saving results to CSV: inputs-outputs/output_lat_lon.csv
+2024-09-20 02:00:22,833 - INFO - Results saved to inputs-outputs/output_lat_lon.csv
+2024-09-20 02:00:22,833 - INFO - Total addresses processed: 48
+2024-09-20 02:00:22,833 - INFO - Successfully geocoded: 47
+2024-09-20 02:00:22,833 - INFO - Success rate: 97.92%
+2024-09-20 02:04:01,486 - INFO - Reading CSV file: inputs-outputs/input_locations.csv
+2024-09-20 02:04:01,490 - INFO - Loaded 48 rows from CSV
+2024-09-20 02:04:01,490 - INFO - Extracting postcodes from addresses
+2024-09-20 02:04:01,492 - INFO - Extracted 44 postcodes
+2024-09-20 02:04:01,492 - INFO - Starting geocoding process
+2024-09-20 02:04:51,672 - INFO - Finished geocoding process. Successfully geocoded 47 out of 48 addresses.
+2024-09-20 02:04:51,672 - INFO - Saving results to CSV: inputs-outputs/output_lat_lon.csv
+2024-09-20 02:04:51,676 - INFO - Results saved to inputs-outputs/output_lat_lon.csv
+2024-09-20 02:04:51,676 - INFO - Total addresses processed: 48
+2024-09-20 02:04:51,676 - INFO - Successfully geocoded: 47
+2024-09-20 02:04:51,676 - INFO - Success rate: 97.92%
+2024-09-20 02:05:59,473 - DEBUG - Starting main function
+2024-09-20 02:05:59,473 - INFO - Reading CSV file: inputs-outputs/input_locations.csv
+2024-09-20 02:05:59,475 - INFO - Loaded 48 rows from CSV
+2024-09-20 02:05:59,475 - INFO - Extracting postcodes from addresses
+2024-09-20 02:05:59,476 - DEBUG - Postcode extraction complete
+2024-09-20 02:05:59,476 - INFO - Extracted 44 postcodes
+2024-09-20 02:05:59,476 - INFO - Starting geocoding process
+2024-09-20 02:05:59,488 - DEBUG - Geocoded: Unit 2 The Invicta Centre, Barking IG11 0BA -> (51.53218765, 0.10796225)
+2024-09-20 02:06:00,497 - DEBUG - Geocoded: 71-73 Hackney Road -> (51.5308158, -0.072308)
+2024-09-20 02:06:01,504 - DEBUG - Geocoded: Unit 1A and Unit 1B Ground Floor 54, Conduit Street, Leicester. LE2 0JN -> (52.6317875, -1.12202075)
+2024-09-20 02:06:02,510 - DEBUG - Geocoded: Unit 3, Avonside Industrial Park, Feeder Road,
+St. Philips, Bristol BS2 0UQ -> (51.4509886, -2.5585745)
+2024-09-20 02:06:03,515 - DEBUG - Geocoded: UNIT 11 THOMAS TRADE CENTRE, THOMAS ROAD E14 7UW -> (51.515431, -0.0262137)
+2024-09-20 02:06:04,522 - DEBUG - Geocoded: Capitol Way 34 NW9 0EW -> (51.59308, -0.2647399)
+2024-09-20 02:06:05,528 - DEBUG - Geocoded: Unit 18 Wates Way BEDDINGTON London CR4 4HR -> (51.3885774, -0.1647679)
+2024-09-20 02:06:06,534 - DEBUG - Geocoded: 2 Reform Trade Park, Reform, Road Maidenhead SL6 8EQ -> (51.5205958, -0.7107642)
+2024-09-20 02:06:07,540 - DEBUG - Geocoded: Unit 11 Lyndean Industrial Estate, Felixstowe Road, Abbey Wood, London SE2 9SG -> (51.49251, 0.11931)
+2024-09-20 02:06:08,547 - DEBUG - Geocoded: 133 Portswood Road -> (-33.9064337, 18.4163087)
+2024-09-20 02:06:09,554 - DEBUG - Geocoded: Unit E10 Voyager Park, Portfield Road, Copnor, Portsmouth, Hampshire PO3 5FL -> (50.82191, -1.05837)
+2024-09-20 02:06:10,556 - DEBUG - Geocoded: Unit 3 Liffords Place Barnes High Street London SW13 9LR -> (51.4733891, -0.2496533)
+2024-09-20 02:06:11,562 - DEBUG - Geocoded: 22-23 Arcadia Avenue, Finchley, London -> (51.5995502, -0.1947384)
+2024-09-20 02:06:12,569 - DEBUG - Geocoded: Farringdon Road 95 / 9 Herball Hill EC1R 3BT -> (51.5223058, -0.1073604)
+2024-09-20 02:06:13,576 - DEBUG - Geocoded: 87 NORTH WESTERN STREET M12 6HU -> (53.47404175, -2.2203465)
+2024-09-20 02:06:14,579 - DEBUG - Geocoded: Unit 13 Thornham Grove Industrial Estate, Thornham Grove, London, E15 1DN -> (51.5471612, -0.0021198384615384617)
+2024-09-20 02:06:15,587 - DEBUG - Geocoded: Ground floor of 81 b & c London Road, Portsmouth, PO2 8RU -> (50.81177, -1.08688)
+2024-09-20 02:06:16,593 - DEBUG - Geocoded: 1 Coldhams Road, Coldhams, Cambridge CB1 3EW -> (52.2087442939394, 0.1491758818181818)
+2024-09-20 02:06:17,601 - DEBUG - Geocoded: Kennington Park, Cranmer House, 39 Brixton Road SW9 6DZ -> (51.4797, -0.11106)
+2024-09-20 02:06:18,609 - DEBUG - Geocoded: Unit 5 (ground floor), 2 Overbury Road, Tottenham, Harningey, London N15 6RH -> (51.5757983, -0.0866487)
+2024-09-20 02:06:19,626 - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-09-20 02:06:19,626 - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-09-20 02:06:19,626 - DEBUG - Nominatim.geocode: https://nominatim.openstreetmap.org/search?q=E17+5QN%2C+UK&format=json&limit=1
+2024-09-20 02:06:19,627 - DEBUG - Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+2024-09-20 02:06:21,558 - DEBUG - Incremented Retry for (url='/search?q=E17+5QN%2C+UK&format=json&limit=1'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+2024-09-20 02:06:21,559 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)")': /search?q=E17+5QN%2C+UK&format=json&limit=1
+2024-09-20 02:06:21,560 - DEBUG - Starting new HTTPS connection (2): nominatim.openstreetmap.org:443
+2024-09-20 02:06:22,417 - DEBUG - https://nominatim.openstreetmap.org:443 "GET /search?q=E17+5QN%2C+UK&format=json&limit=1 HTTP/11" 200 2
+2024-09-20 02:06:22,429 - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-09-20 02:06:22,429 - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-09-20 02:06:22,430 - DEBUG - Nominatim.geocode: https://nominatim.openstreetmap.org/search?q=Unit+24%2C+Uplands+Business+Park%2C+Blackhorse+Lane%2C+Walthamstow+E17+5QN&format=json&limit=1
+2024-09-20 02:06:22,430 - DEBUG - Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+2024-09-20 02:06:23,449 - DEBUG - https://nominatim.openstreetmap.org:443 "GET /search?q=Unit+24%2C+Uplands+Business+Park%2C+Blackhorse+Lane%2C+Walthamstow+E17+5QN&format=json&limit=1 HTTP/11" 200 2
+2024-09-20 02:06:23,452 - DEBUG - Geocoded: Unit 24, Uplands Business Park, Blackhorse Lane, Walthamstow E17 5QN -> (None, None)
+2024-09-20 02:06:24,459 - DEBUG - Geocoded: UNIT 6 Orchard Business Centre, Kangley Bridge Road, Sydenham, London SE26 5AQ -> (51.42628, -0.03594)
+2024-09-20 02:06:25,464 - DEBUG - Geocoded: Unit 21 Acton Park Estate, The Vale, Acton W3 7QE -> (51.50523, -0.25766)
+2024-09-20 02:06:26,472 - DEBUG - Geocoded: Arch 154 Martha Street London E1 2PG -> (51.51191, -0.0557)
+2024-09-20 02:06:27,475 - DEBUG - Geocoded: UK - Unit 4H, Crossley Park, Stockport SK4 5GA -> (53.43464, -2.19123)

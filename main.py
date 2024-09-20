@@ -6,18 +6,20 @@ import time
 import logging
 import sys
 from tqdm import tqdm
-import json
 import configparser
-import codecs
 import pickle
 
 # Load configuration
 config = configparser.ConfigParser()
 config.read('geocoding_config.ini')
 
+# Get logging level from config
+log_level_str = config.get('Logging', 'level', fallback='INFO')
+log_level = getattr(logging, log_level_str.upper(), logging.INFO)
+
 # Set up logging to file and console
 logging.basicConfig(
-    level=logging.INFO,
+    level=log_level,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
         logging.FileHandler('geocoding.log'),
@@ -97,6 +99,7 @@ def clean_cache():
     save_cache()
 
 def main():
+    logger.debug("Starting main function")
     # Read the CSV file
     logger.info(f"Reading CSV file: {INPUT_FILE}")
     df = pd.read_csv(INPUT_FILE)
@@ -105,6 +108,7 @@ def main():
     # Extract postcodes
     logger.info("Extracting postcodes from addresses")
     df['postcode'] = df['address'].apply(extract_postcode)
+    logger.debug(f"Postcode extraction complete")
     logger.info(f"Extracted {df['postcode'].notna().sum()} postcodes")
 
     # Apply geocoding with fallback and rate limiting
@@ -115,12 +119,14 @@ def main():
     for index, row in tqdm(df.iterrows(), total=total_addresses, desc="Geocoding", unit="address"):
         lat, lon = geocode_with_fallback(row)
         results.append((lat, lon))
+        logger.debug(f"Geocoded: {row['address']} -> ({lat}, {lon})")
         time.sleep(RATE_LIMIT)  # Add a delay after each geocoding request
 
     df['lat'], df['lon'] = zip(*results)
 
     # Save the cache after processing
     save_cache()
+    logger.debug("Cache saved")
 
     # Count successful geocodes
     successful_geocodes = df['lat'].notna().sum()
@@ -135,8 +141,7 @@ def main():
     logger.info(f"Successfully geocoded: {successful_geocodes}")
     logger.info(f"Success rate: {successful_geocodes/total_addresses:.2%}")
 
-    # Clean the cache
-    clean_cache()
+    logger.debug("Main function completed")
 
 if __name__ == "__main__":
     main()
