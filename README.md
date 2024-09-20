@@ -22,6 +22,7 @@ Features:
 - Basic error handling
 - Progress bar using tqdm
 - Logging of the geocoding process
+- Simple caching mechanism using a JSON file
 
 ## Advanced Model (`01.advanced_model.py`)
 
@@ -38,6 +39,7 @@ Additional Features:
 - Configurable input/output file names
 - Adjustable rate limiting and retry attempts
 - Cached results stored using joblib
+- Address validation
 
 ## Configuration (`geocoding_config.ini`)
 
@@ -52,17 +54,20 @@ This file contains settings for the advanced model, including:
 
 - Python 3.6+
 - pandas
+- numpy
 - geopy
 - tqdm
-- ratelimit (for advanced model)
-- joblib (for advanced model)
-- configparser (for advanced model)
+- ratelimit
+- joblib
+- configparser
+- backoff
+- requests
 
 ## Usage
 
 1. Install the required packages:
    ```
-   pip install pandas geopy tqdm ratelimit joblib configparser
+   pip install pandas numpy geopy tqdm ratelimit joblib configparser backoff requests
    ```
 
 2. Prepare your input CSV file with an 'address' column.
