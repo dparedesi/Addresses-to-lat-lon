@@ -1,12 +1,12 @@
 address,postcode,lat,lon
-"Unit 2 The Invicta Centre, Barking",,,
+"Unit 2 The Invicta Centre, Barking IG11 0BA",IG11 0BA,51.53218765,0.10796225
 71-73 Hackney Road,,51.5308158,-0.072308
 "Unit 1A and Unit 1B Ground Floor 54, Conduit Street, Leicester. LE2 0JN",LE2 0JN,52.6317875,-1.12202075
 "Unit 3, Avonside Industrial Park, Feeder Road,
 St. Philips, Bristol",,,
 "UNIT 11 THOMAS TRADE CENTRE, THOMAS ROAD",,,
-Capitol Way 34,,41.8037212,-72.2408639
-Unit 18 Wates Way BEDDINGTON London,,,
+Capitol Way 34,,,
+Unit 18 Wates Way BEDDINGTON London CR4 4HR,CR4 4HR,51.3885774,-0.1647679
 "2 Reform Trade Park, Reform, Road Maidenhead SL6 8EQ",SL6 8EQ,51.5205958,-0.7107642
 "Unit 11 Lyndean Industrial Estate, Felixstowe Road, Abbey Wood, London SE2 9SG",SE2 9SG,51.49251,0.11931
 133 Portswood Road,,-33.9064337,18.4163087
@@ -21,7 +21,7 @@ Farringdon Road 95 / 9 Herball Hill,,,
 "Kennington Park, Cranmer House, 39 Brixton Road",,,
 "Unit 5 (ground floor), 2 Overbury Road, Tottenham, Harningey, London N15 6RH",N15 6RH,51.5757983,-0.0866487
 "Unit 24, Uplands Business Park, Blackhorse Lane, Walthamstow E17 5QN",E17 5QN,,
-"UNIT 6 Orchard Business Centre, Kangley Bridge Road, Sydenham, London",,,
+"UNIT 6 Orchard Business Centre, Kangley Bridge Road, Sydenham, London SE26 5AQ",SE26 5AQ,51.42628,-0.03594
 "Unit 21 Acton Park Estate, The Vale, Acton W3 7QE",W3 7QE,51.50523,-0.25766
 Arch 154 Martha Street London E1 2PG,E1 2PG,51.51191,-0.0557
 "UK - Unit 4H, Crossley Park, Stockport",,,
@@ -45,7 +45,7 @@ Arch 5 Holloway Road London N7 8HS,N7 8HS,51.5529717,-0.1131257
 "Units 18 & 19 Resolution Way, Deptford SE8 4NT",SE8 4NT,51.478606725,-0.02483825
 "Unit 4 and 5, Brook Lane Business Centre, Brook Lane North, Brentford, TW8 0PP",TW8 0PP,51.48888,-0.30403
 "Unit 199 Bellendon Road, London SE16 4QJ",SE16 4QJ,51.49705,-0.06621
-"Units 116 & 119 Cannon Workshops, Cannon Drive, London E14 4ASJ",,,
-"Arch 33, Water Street, Birmingham",,,
+"Units 116 & 119 Cannon Workshops, Cannon Drive, London E14 4AS",E14 4AS,51.5074176,-0.02646486666666667
+"Arch 33, Water Street, Birmingham B4 6GA",B4 6GA,52.48413075,-1.898936
 Unit 8 Kubrick Business Estate (Arch 417 Station Approach) London E7 0LA,E7 0LA,51.55152275,0.027899875
 "Ground floor, Dudley House, North Wharf Road W2 1JP",W2 1JP,51.5193,-0.17712

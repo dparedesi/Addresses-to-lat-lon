@@ -46,14 +46,17 @@ logger.info("Extracting postcodes from addresses")
 df['postcode'] = df['address'].apply(extract_postcode)
 logger.info(f"Extracted {df['postcode'].notna().sum()} postcodes")
 
-# Apply geocoding with fallback
+# Apply geocoding with fallback and rate limiting
 logger.info("Starting geocoding process")
 total_addresses = len(df)
 successful_geocodes = 0
 
-# Use tqdm for progress bar
-tqdm.pandas(desc="Geocoding", unit="address")
-results = df.progress_apply(geocode_with_fallback, axis=1)
+results = []
+for index, row in tqdm(df.iterrows(), total=total_addresses, desc="Geocoding", unit="address"):
+    lat, lon = geocode_with_fallback(row)
+    results.append((lat, lon))
+    time.sleep(2)  # Add a 2-second delay after each geocoding request
+
 df['lat'], df['lon'] = zip(*results)
 
 # Count successful geocodes
@@ -61,16 +64,10 @@ successful_geocodes = df['lat'].notna().sum()
 
 logger.info(f"Finished geocoding process. Successfully geocoded {successful_geocodes} out of {total_addresses} addresses.")
 
-# Add a delay to respect rate limits
-time.sleep(1)
-
 # Save the updated DataFrame to a new CSV file
 logger.info("Saving results to CSV")
 df.to_csv('geocoded_addresses.csv', index=False)
 logger.info("Results saved to geocoded_addresses.csv")
-
-# Print summary
-print(f"\nSummary:")
-print(f"Total addresses processed: {total_addresses}")
-print(f"Successfully geocoded: {successful_geocodes}")
-print(f"Success rate: {successful_geocodes/total_addresses:.2%}")
+logger.info(f"Total addresses processed: {total_addresses}")
+logger.info(f"Successfully geocoded: {successful_geocodes}")
+logger.info(f"Success rate: {successful_geocodes/total_addresses:.2%}")
