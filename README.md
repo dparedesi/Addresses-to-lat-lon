@@ -26,8 +26,8 @@ This project provides a Python script for geocoding address data. It takes a CSV
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/geocoding-project.git
-   cd geocoding-project
+   git clone https://github.com/dparedesi/Addresses-to-lat-lon.git
+   cd Addresses-to-lat-lon
    ```
 
 2. Install the required packages:
