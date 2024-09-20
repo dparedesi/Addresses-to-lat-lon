@@ -5,10 +5,28 @@ from geopy.exc import GeocoderTimedOut, GeocoderServiceError
 import time
 import logging
 from tqdm import tqdm
+import json
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+# Add a simple cache
+geocode_cache = {}
+
+def load_cache():
+    try:
+        with open('geocode_cache.json', 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+def save_cache():
+    with open('geocode_cache.json', 'w') as f:
+        json.dump(geocode_cache, f)
+
+# Load the cache at the start
+geocode_cache = load_cache()
 
 def extract_postcode(address):
     pattern = r'\b[A-Z]{1,2}[0-9][A-Z0-9]? [0-9][ABD-HJLNP-UW-Z]{2}\b'
@@ -16,16 +34,24 @@ def extract_postcode(address):
     return match.group(0) if match else None
 
 def geocode(location, is_postcode=True):
+    if location in geocode_cache:
+        return geocode_cache[location]
+
     geolocator = Nominatim(user_agent="my_app")
     try:
         if is_postcode:
             query = f"{location}, UK"
         else:
             query = location
-        location = geolocator.geocode(query)
-        if location:
-            return location.latitude, location.longitude
-        return None, None
+        location_result = geolocator.geocode(query)
+        if location_result:
+            result = (location_result.latitude, location_result.longitude)
+        else:
+            result = (None, None)
+        
+        # Cache the result
+        geocode_cache[location] = result
+        return result
     except (GeocoderTimedOut, GeocoderServiceError):
         return None, None
 
@@ -55,9 +81,12 @@ results = []
 for index, row in tqdm(df.iterrows(), total=total_addresses, desc="Geocoding", unit="address"):
     lat, lon = geocode_with_fallback(row)
     results.append((lat, lon))
-    time.sleep(2)  # Add a 2-second delay after each geocoding request
+    time.sleep(1)  # Add a 1-second delay after each geocoding request
 
 df['lat'], df['lon'] = zip(*results)
+
+# Save the cache after processing
+save_cache()
 
 # Count successful geocodes
 successful_geocodes = df['lat'].notna().sum()

@@ -5,7 +5,7 @@ address,postcode,lat,lon
 "Unit 3, Avonside Industrial Park, Feeder Road,
 St. Philips, Bristol",,,
 "UNIT 11 THOMAS TRADE CENTRE, THOMAS ROAD",,,
-Capitol Way 34,,,
+Capitol Way 34,,41.8037212,-72.2408639
 Unit 18 Wates Way BEDDINGTON London CR4 4HR,CR4 4HR,51.3885774,-0.1647679
 "2 Reform Trade Park, Reform, Road Maidenhead SL6 8EQ",SL6 8EQ,51.5205958,-0.7107642
 "Unit 11 Lyndean Industrial Estate, Felixstowe Road, Abbey Wood, London SE2 9SG",SE2 9SG,51.49251,0.11931
@@ -39,9 +39,9 @@ Street, Brighton, BN1 4FQ",BN1 4FQ,50.82901005,-0.14037555
 "Unit 14 Capitol Industrial Park, Capitol Way, Colindale, London NW9 0EQ",NW9 0EQ,51.59464,-0.26449
 "Unit 21 Zennor Trade Park, Balham, London SW12 0PS",SW12 0PS,51.44502,-0.14464
 "Unit 16 Raymouth Road, London SE16 2DB",SE16 2DB,51.49137567631579,-0.0575480447368421
-"67-69 Holmes Road, Kentish Town",,51.5488174,-0.1464687
+"67-69 Holmes Road, Kentish Town",,,
 5-8 Argall Avenue E10 7QE,E10 7QE,51.5701604,-0.04080025
-Arch 5 Holloway Road London N7 8HS,N7 8HS,51.5529717,-0.1131257
+Arch 5 Holloway Road London N7 8HS,N7 8HS,,
 "Units 18 & 19 Resolution Way, Deptford SE8 4NT",SE8 4NT,51.478606725,-0.02483825
 "Unit 4 and 5, Brook Lane Business Centre, Brook Lane North, Brentford, TW8 0PP",TW8 0PP,51.48888,-0.30403
 "Unit 199 Bellendon Road, London SE16 4QJ",SE16 4QJ,51.49705,-0.06621
