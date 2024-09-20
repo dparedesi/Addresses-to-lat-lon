@@ -6,20 +6,16 @@ import time
 import logging
 import sys
 from tqdm import tqdm
-import configparser
 import pickle
+import configparser
 
 # Load configuration
 config = configparser.ConfigParser()
 config.read('geocoding_config.ini')
 
-# Get logging level from config
-log_level_str = config.get('Logging', 'level', fallback='INFO')
-log_level = getattr(logging, log_level_str.upper(), logging.INFO)
-
-# Set up logging to file and console
+# Set up logging
 logging.basicConfig(
-    level=log_level,
+    level=getattr(logging, config.get('Logging', 'level', fallback='INFO').upper()),
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
         logging.FileHandler('geocoding.log'),
@@ -36,20 +32,16 @@ USER_AGENT = config['Geocoding']['user_agent']
 RATE_LIMIT = int(config['Geocoding']['rate_limit'])
 MAX_RETRIES = int(config['Geocoding']['max_retries'])
 
-# Add a simple cache
-geocode_cache = {}
-
 def load_cache():
+    """Load the geocoding cache from a file."""
     try:
         with open(CACHE_FILE, 'rb') as f:
             return pickle.load(f)
     except FileNotFoundError:
         return {}
-    except Exception as e:
-        print(f"Error loading cache: {str(e)}")
-        return {}
 
 def save_cache():
+    """Save the geocoding cache to a file."""
     with open(CACHE_FILE, 'wb') as f:
         pickle.dump(geocode_cache, f)
 
@@ -57,25 +49,32 @@ def save_cache():
 geocode_cache = load_cache()
 
 def extract_postcode(address):
+    """Extract a UK postcode from an address string."""
     pattern = r'\b[A-Z]{1,2}[0-9][A-Z0-9]? [0-9][ABD-HJLNP-UW-Z]{2}\b'
     match = re.search(pattern, address)
     return match.group(0) if match else None
 
 def geocode(location, is_postcode=True):
+    """
+    Geocode a location using Nominatim.
+    
+    Args:
+    location (str): The location to geocode (postcode or full address).
+    is_postcode (bool): Whether the location is a postcode.
+
+    Returns:
+    tuple: (latitude, longitude) or (None, None) if geocoding fails.
+    """
     if location in geocode_cache:
         return geocode_cache[location]
 
     geolocator = Nominatim(user_agent=USER_AGENT)
     for attempt in range(MAX_RETRIES):
         try:
-            if is_postcode:
-                query = f"{location}, UK"
-            else:
-                query = location
+            query = f"{location}, UK" if is_postcode else location
             location_result = geolocator.geocode(query)
             if location_result:
                 result = (location_result.latitude, location_result.longitude)
-                # Only cache non-null results
                 geocode_cache[location] = result
                 return result
             else:
@@ -87,31 +86,22 @@ def geocode(location, is_postcode=True):
             time.sleep(2 ** attempt)  # Exponential backoff
 
 def geocode_with_fallback(row):
+    """Attempt to geocode using postcode first, then fall back to full address."""
     if row['postcode']:
         lat, lon = geocode(row['postcode'])
         if lat and lon:
             return lat, lon
     return geocode(row['address'], is_postcode=False)
 
-def clean_cache():
-    global geocode_cache
-    geocode_cache = {k: v for k, v in geocode_cache.items() if v[0] is not None and v[1] is not None}
-    save_cache()
-
 def main():
-    logger.debug("Starting main function")
-    # Read the CSV file
     logger.info(f"Reading CSV file: {INPUT_FILE}")
     df = pd.read_csv(INPUT_FILE)
     logger.info(f"Loaded {len(df)} rows from CSV")
 
-    # Extract postcodes
     logger.info("Extracting postcodes from addresses")
     df['postcode'] = df['address'].apply(extract_postcode)
-    logger.debug(f"Postcode extraction complete")
     logger.info(f"Extracted {df['postcode'].notna().sum()} postcodes")
 
-    # Apply geocoding with fallback and rate limiting
     logger.info("Starting geocoding process")
     total_addresses = len(df)
 
@@ -124,24 +114,18 @@ def main():
 
     df['lat'], df['lon'] = zip(*results)
 
-    # Save the cache after processing
     save_cache()
     logger.debug("Cache saved")
 
-    # Count successful geocodes
     successful_geocodes = df['lat'].notna().sum()
-
     logger.info(f"Finished geocoding process. Successfully geocoded {successful_geocodes} out of {total_addresses} addresses.")
 
-    # Save the updated DataFrame to a new CSV file
     logger.info(f"Saving results to CSV: {OUTPUT_FILE}")
     df.to_csv(OUTPUT_FILE, index=False)
     logger.info(f"Results saved to {OUTPUT_FILE}")
     logger.info(f"Total addresses processed: {total_addresses}")
     logger.info(f"Successfully geocoded: {successful_geocodes}")
     logger.info(f"Success rate: {successful_geocodes/total_addresses:.2%}")
-
-    logger.debug("Main function completed")
 
 if __name__ == "__main__":
     main()

@@ -111,3 +111,46 @@ St. Philips, Bristol BS2 0UQ -> (51.4509886, -2.5585745)
 2024-09-20 02:06:25,464 - DEBUG - Geocoded: Unit 21 Acton Park Estate, The Vale, Acton W3 7QE -> (51.50523, -0.25766)
 2024-09-20 02:06:26,472 - DEBUG - Geocoded: Arch 154 Martha Street London E1 2PG -> (51.51191, -0.0557)
 2024-09-20 02:06:27,475 - DEBUG - Geocoded: UK - Unit 4H, Crossley Park, Stockport SK4 5GA -> (53.43464, -2.19123)
+2024-09-20 02:06:28,480 - DEBUG - Geocoded: Unit 4, Woodman Works, Durnsford Road, Wimbledon, SW19 8DR -> (51.4340096, -0.19653283333333332)
+2024-09-20 02:06:29,487 - DEBUG - Geocoded: Units 1&2, Newtown Road Newtown Trade Park, Hove BN3 7BA -> (50.8364912, -0.1744086)
+2024-09-20 02:06:30,491 - DEBUG - Geocoded: Unit 9, Wembley Trade Park, 390 North Circular Road, Wembley, London, NW10 0JF -> (51.5523104, -0.2551902)
+2024-09-20 02:06:31,493 - DEBUG - Geocoded: UNITS 1 & 2 BARRATT INDUSTRIAL ESTATE, 28-40 ERNEST AVENUE, LONDON, SE27 0DJ -> (51.42988, -0.10316)
+2024-09-20 02:06:32,500 - DEBUG - Geocoded: Unit 5 Mountbatten Business Park, Jackson Close, Portsmouth, Hampshire PO6 1US -> (50.83941, -1.04279)
+2024-09-20 02:06:33,505 - DEBUG - Geocoded: Unit 22 Malham Industrial Estate BN27 2EY -> (50.8561, 0.25957)
+2024-09-20 02:06:34,511 - DEBUG - Geocoded: Arch 141 and Land, Newport Street, Vauxhall SE11 6AQ -> (51.4926699, -0.11816)
+2024-09-20 02:06:35,516 - DEBUG - Geocoded: Unit 2, Ground Floor, 37a Skeltons Lane, London, E10 5BT -> (51.57138, -0.01001)
+2024-09-20 02:06:36,522 - DEBUG - Geocoded: Units 8 & 9 Lower Goods Yard off Trafalgar
+Street, Brighton, BN1 4FQ -> (50.82901005, -0.14037555)
+2024-09-20 02:06:37,530 - DEBUG - Geocoded: Unit 15 Heathway Industrial Estate, Manchester Way, Dagenham, Essex RM10 8PN -> (51.549, 0.15748)
+2024-09-20 02:06:38,536 - DEBUG - Geocoded: Unit 14 Capitol Industrial Park, Capitol Way, Colindale, London NW9 0EQ -> (51.59464, -0.26449)
+2024-09-20 02:06:39,539 - DEBUG - Geocoded: Unit 21 Zennor Trade Park, Balham, London SW12 0PS -> (51.44502, -0.14464)
+2024-09-20 02:06:40,546 - DEBUG - Geocoded: Unit 16 Raymouth Road, London SE16 2DB -> (51.49137567631579, -0.0575480447368421)
+2024-09-20 02:06:41,549 - DEBUG - Geocoded: 67-69 Holmes Road, Kentish Town -> (51.5488174, -0.1464687)
+2024-09-20 02:06:42,558 - DEBUG - Geocoded: 5-8 Argall Avenue E10 7QE -> (51.5701604, -0.04080025)
+2024-09-20 02:06:43,561 - DEBUG - Geocoded: Arch 5 Holloway Road London N7 8HS -> (51.5529717, -0.1131257)
+2024-09-20 02:06:44,563 - DEBUG - Geocoded: Units 18 & 19 Resolution Way, Deptford SE8 4NT -> (51.478606725, -0.02483825)
+2024-09-20 02:06:45,569 - DEBUG - Geocoded: Unit 4 and 5, Brook Lane Business Centre, Brook Lane North, Brentford, TW8 0PP -> (51.48888, -0.30403)
+2024-09-20 02:06:46,576 - DEBUG - Geocoded: Unit 199 Bellendon Road, London SE16 4QJ -> (51.49705, -0.06621)
+2024-09-20 02:06:47,580 - DEBUG - Geocoded: Units 116 & 119 Cannon Workshops, Cannon Drive, London E14 4AS -> (51.5074176, -0.02646486666666667)
+2024-09-20 02:06:48,587 - DEBUG - Geocoded: Arch 33, Water Street, Birmingham B4 6GA -> (52.48413075, -1.898936)
+2024-09-20 02:06:49,590 - DEBUG - Geocoded: Unit 8 Kubrick Business Estate (Arch 417 Station Approach) London E7 0LA -> (51.55152275, 0.027899875)
+2024-09-20 02:06:50,597 - DEBUG - Geocoded: Ground floor, Dudley House, North Wharf Road W2 1JP -> (51.5193, -0.17712)
+2024-09-20 02:06:51,607 - DEBUG - Cache saved
+2024-09-20 02:06:51,609 - INFO - Finished geocoding process. Successfully geocoded 47 out of 48 addresses.
+2024-09-20 02:06:51,609 - INFO - Saving results to CSV: inputs-outputs/output_lat_lon.csv
+2024-09-20 02:06:51,613 - INFO - Results saved to inputs-outputs/output_lat_lon.csv
+2024-09-20 02:06:51,613 - INFO - Total addresses processed: 48
+2024-09-20 02:06:51,613 - INFO - Successfully geocoded: 47
+2024-09-20 02:06:51,613 - INFO - Success rate: 97.92%
+2024-09-20 02:06:51,613 - DEBUG - Main function completed
+2024-09-20 02:08:04,880 - INFO - Reading CSV file: inputs-outputs/input_locations.csv
+2024-09-20 02:08:04,883 - INFO - Loaded 48 rows from CSV
+2024-09-20 02:08:04,883 - INFO - Extracting postcodes from addresses
+2024-09-20 02:08:04,885 - INFO - Extracted 44 postcodes
+2024-09-20 02:08:04,885 - INFO - Starting geocoding process
+2024-09-20 02:08:54,994 - INFO - Finished geocoding process. Successfully geocoded 47 out of 48 addresses.
+2024-09-20 02:08:54,995 - INFO - Saving results to CSV: inputs-outputs/output_lat_lon.csv
+2024-09-20 02:08:55,000 - INFO - Results saved to inputs-outputs/output_lat_lon.csv
+2024-09-20 02:08:55,000 - INFO - Total addresses processed: 48
+2024-09-20 02:08:55,000 - INFO - Successfully geocoded: 47
+2024-09-20 02:08:55,000 - INFO - Success rate: 97.92%

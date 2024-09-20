@@ -1,9 +1,6 @@
 pandas
 numpy
 geopy
-ratelimit
 tqdm
-backoff
 requests
-joblib
 configparser
