@@ -1,4 +1,4 @@
-# Geocoding Address Data
+# Geocoding Address Data to lat/lon
 
 This project provides a Python script for geocoding address data. It takes a CSV file containing addresses and converts them into geographic coordinates (latitude and longitude).
 
