@@ -1,0 +1,45 @@
+2024-09-20 01:47:52,723 - INFO - Reading CSV file: inputs-outputs/input_locations.csv
+2024-09-20 01:47:52,727 - INFO - Loaded 48 rows from CSV
+2024-09-20 01:47:52,727 - INFO - Extracting postcodes from addresses
+2024-09-20 01:47:52,729 - INFO - Extracted 44 postcodes
+2024-09-20 01:47:52,729 - INFO - Starting geocoding process
+2024-09-20 01:49:13,797 - INFO - Reading CSV file: inputs-outputs/input_locations.csv
+2024-09-20 01:49:13,799 - INFO - Loaded 48 rows from CSV
+2024-09-20 01:49:13,799 - INFO - Extracting postcodes from addresses
+2024-09-20 01:49:13,800 - INFO - Extracted 44 postcodes
+2024-09-20 01:49:13,800 - INFO - Starting geocoding process
+2024-09-20 01:49:27,486 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)")': /search?q=SL6+8EQ%2C+UK&format=json&limit=1
+2024-09-20 01:50:01,900 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)")': /search?q=SE27+0DJ%2C+UK&format=json&limit=1
+2024-09-20 01:50:12,687 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)")': /search?q=BN1+4FQ%2C+UK&format=json&limit=1
+2024-09-20 01:50:14,077 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)")': /search?q=BN1+4FQ%2C+UK&format=json&limit=1
+2024-09-20 01:50:20,741 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)")': /search?q=SW12+0PS%2C+UK&format=json&limit=1
+2024-09-20 01:50:25,765 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)")': /search?q=67-69+Holmes+Road%2C+Kentish+Town&format=json&limit=1
+2024-09-20 01:50:27,163 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)")': /search?q=67-69+Holmes+Road%2C+Kentish+Town&format=json&limit=1
+2024-09-20 01:50:44,337 - INFO - Finished geocoding process. Successfully geocoded 44 out of 48 addresses.
+2024-09-20 01:50:44,337 - INFO - Saving results to CSV: inputs-outputs/output_lat_lon.csv
+2024-09-20 01:50:44,340 - INFO - Results saved to inputs-outputs/output_lat_lon.csv
+2024-09-20 01:50:44,340 - INFO - Total addresses processed: 48
+2024-09-20 01:50:44,340 - INFO - Successfully geocoded: 44
+2024-09-20 01:50:44,340 - INFO - Success rate: 91.67%
+2024-09-20 01:52:49,993 - INFO - Reading CSV file: inputs-outputs/input_locations.csv
+2024-09-20 01:52:49,995 - INFO - Loaded 48 rows from CSV
+2024-09-20 01:52:49,995 - INFO - Extracting postcodes from addresses
+2024-09-20 01:52:49,995 - INFO - Extracted 44 postcodes
+2024-09-20 01:52:49,995 - INFO - Starting geocoding process
+2024-09-20 01:53:38,270 - INFO - Finished geocoding process. Successfully geocoded 44 out of 48 addresses.
+2024-09-20 01:53:38,271 - INFO - Saving results to CSV: inputs-outputs/output_lat_lon.csv
+2024-09-20 01:53:38,274 - INFO - Results saved to inputs-outputs/output_lat_lon.csv
+2024-09-20 01:53:38,274 - INFO - Total addresses processed: 48
+2024-09-20 01:53:38,274 - INFO - Successfully geocoded: 44
+2024-09-20 01:53:38,274 - INFO - Success rate: 91.67%
+2024-09-20 01:56:58,787 - INFO - Reading CSV file: inputs-outputs/input_locations.csv
+2024-09-20 01:56:58,790 - INFO - Loaded 48 rows from CSV
+2024-09-20 01:56:58,790 - INFO - Extracting postcodes from addresses
+2024-09-20 01:56:58,792 - INFO - Extracted 44 postcodes
+2024-09-20 01:56:58,792 - INFO - Starting geocoding process
+2024-09-20 01:57:47,049 - INFO - Finished geocoding process. Successfully geocoded 44 out of 48 addresses.
+2024-09-20 01:57:47,050 - INFO - Saving results to CSV: inputs-outputs/output_lat_lon.csv
+2024-09-20 01:57:47,058 - INFO - Results saved to inputs-outputs/output_lat_lon.csv
+2024-09-20 01:57:47,058 - INFO - Total addresses processed: 48
+2024-09-20 01:57:47,058 - INFO - Successfully geocoded: 44
+2024-09-20 01:57:47,058 - INFO - Success rate: 91.67%

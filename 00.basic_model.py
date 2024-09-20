@@ -4,35 +4,52 @@ from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut, GeocoderServiceError
 import time
 import logging
+import sys
 from tqdm import tqdm
 import json
-import argparse
+import configparser
+import codecs
+import pickle
 
-# Set up logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# Load configuration
+config = configparser.ConfigParser()
+config.read('geocoding_config.ini')
+
+# Set up logging to file and console
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('geocoding.log'),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
 logger = logging.getLogger(__name__)
 
-# Add command-line arguments
-parser = argparse.ArgumentParser(description='Geocode addresses from a CSV file.')
-parser.add_argument('--input', default='inputs-outputs/input_locations.csv', help='Input CSV file path')
-parser.add_argument('--output', default='inputs-outputs/output_lat_lon.csv', help='Output CSV file path')
-parser.add_argument('--cache', default='geocode_cache.json', help='Cache file path')
-parser.add_argument('--delay', type=float, default=1.0, help='Delay between geocoding requests in seconds')
-args = parser.parse_args()
+# Get configuration values
+INPUT_FILE = config['Files']['input_csv']
+OUTPUT_FILE = config['Files']['output_csv']
+CACHE_FILE = config['Files']['cache_file']
+USER_AGENT = config['Geocoding']['user_agent']
+RATE_LIMIT = int(config['Geocoding']['rate_limit'])
+MAX_RETRIES = int(config['Geocoding']['max_retries'])
 
 # Add a simple cache
 geocode_cache = {}
 
 def load_cache():
     try:
-        with open(args.cache, 'r') as f:
-            return json.load(f)
+        with open(CACHE_FILE, 'rb') as f:
+            return pickle.load(f)
     except FileNotFoundError:
+        return {}
+    except Exception as e:
+        print(f"Error loading cache: {str(e)}")
         return {}
 
 def save_cache():
-    with open(args.cache, 'w') as f:
-        json.dump(geocode_cache, f)
+    with open(CACHE_FILE, 'wb') as f:
+        pickle.dump(geocode_cache, f)
 
 # Load the cache at the start
 geocode_cache = load_cache()
@@ -46,9 +63,8 @@ def geocode(location, is_postcode=True):
     if location in geocode_cache:
         return geocode_cache[location]
 
-    geolocator = Nominatim(user_agent="my_app")
-    max_retries = 3
-    for attempt in range(max_retries):
+    geolocator = Nominatim(user_agent=USER_AGENT)
+    for attempt in range(MAX_RETRIES):
         try:
             if is_postcode:
                 query = f"{location}, UK"
@@ -57,15 +73,14 @@ def geocode(location, is_postcode=True):
             location_result = geolocator.geocode(query)
             if location_result:
                 result = (location_result.latitude, location_result.longitude)
+                # Only cache non-null results
+                geocode_cache[location] = result
+                return result
             else:
-                result = (None, None)
-            
-            # Cache the result
-            geocode_cache[location] = result
-            return result
+                return (None, None)
         except (GeocoderTimedOut, GeocoderServiceError):
-            if attempt == max_retries - 1:
-                logger.warning(f"Failed to geocode {location} after {max_retries} attempts")
+            if attempt == MAX_RETRIES - 1:
+                logger.warning(f"Failed to geocode {location} after {MAX_RETRIES} attempts")
                 return None, None
             time.sleep(2 ** attempt)  # Exponential backoff
 
@@ -76,10 +91,15 @@ def geocode_with_fallback(row):
             return lat, lon
     return geocode(row['address'], is_postcode=False)
 
+def clean_cache():
+    global geocode_cache
+    geocode_cache = {k: v for k, v in geocode_cache.items() if v[0] is not None and v[1] is not None}
+    save_cache()
+
 def main():
     # Read the CSV file
-    logger.info(f"Reading CSV file: {args.input}")
-    df = pd.read_csv(args.input)
+    logger.info(f"Reading CSV file: {INPUT_FILE}")
+    df = pd.read_csv(INPUT_FILE)
     logger.info(f"Loaded {len(df)} rows from CSV")
 
     # Extract postcodes
@@ -95,7 +115,7 @@ def main():
     for index, row in tqdm(df.iterrows(), total=total_addresses, desc="Geocoding", unit="address"):
         lat, lon = geocode_with_fallback(row)
         results.append((lat, lon))
-        time.sleep(args.delay)  # Add a delay after each geocoding request
+        time.sleep(RATE_LIMIT)  # Add a delay after each geocoding request
 
     df['lat'], df['lon'] = zip(*results)
 
@@ -108,12 +128,15 @@ def main():
     logger.info(f"Finished geocoding process. Successfully geocoded {successful_geocodes} out of {total_addresses} addresses.")
 
     # Save the updated DataFrame to a new CSV file
-    logger.info(f"Saving results to CSV: {args.output}")
-    df.to_csv(args.output, index=False)
-    logger.info(f"Results saved to {args.output}")
+    logger.info(f"Saving results to CSV: {OUTPUT_FILE}")
+    df.to_csv(OUTPUT_FILE, index=False)
+    logger.info(f"Results saved to {OUTPUT_FILE}")
     logger.info(f"Total addresses processed: {total_addresses}")
     logger.info(f"Successfully geocoded: {successful_geocodes}")
     logger.info(f"Success rate: {successful_geocodes/total_addresses:.2%}")
+
+    # Clean the cache
+    clean_cache()
 
 if __name__ == "__main__":
     main()
